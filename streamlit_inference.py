@@ -15,7 +15,6 @@ from detectron2.utils.logger import setup_logger
 setup_logger()
 import logging
 logger = logging.getLogger("detectron2")
-#from src.download_5_classes_model import Cfg
 import sys
 
 s3_resource = None
@@ -53,7 +52,7 @@ def setup_config_infer(params):
 
 def main():
     # UI of website
-    st.header("**CHEST X-RAY VERSION2**")
+    st.header("**CHEST X-RAY VERSION3**")
     st.write("by Nathan Ngo")
     st.write("Read carefully the [instructions](https://github.com/DatacollectorVN/Chest-Xray-Version2/tree/master/website-streamlit) of that model")
     st.write("If you don't have the X-ray image, click [here](https://drive.google.com/drive/folders/1HnTG2LXkltJOFPdVNYx8JplI8phUqpSK?usp=sharing) to download")
