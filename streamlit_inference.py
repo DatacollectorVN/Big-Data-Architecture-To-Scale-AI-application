@@ -20,7 +20,7 @@ import sys
 
 s3_resource = None
 rds_client = None
-INI_FILE_PATH = os.path.join('IAC', 'credential_aws.ini')
+INI_FILE_PATH = os.path.join('IAC', 'credential_aws_sample.ini')
 SECTION_RDS = 'Credential-AWS-RDS-MySQL'
 SECTION_S3 = 'Credential-AWS-S3'
 SECTION_INFO_S3 = 'Info-AWS-S3'
@@ -66,26 +66,26 @@ def main():
     
     cfg = setup_config_infer(params)
     model = load_model(cfg)
-    img_file = Image.open(file)
-    img = np.array(img_file.convert("RGB"))
+    image_file = Image.open(file)
+    image = np.array(image_file.convert("RGB"))
     col_1, col_2 = st.columns([1, 1])
     col_1.write("Orginal image")
-    col_1.image(img)
+    col_1.image(image)
     start = time.time()
-    outputs = detectron2_prediction(model, img)
+    outputs = detectron2_prediction(model, image)
     duration = time.time() - start
     pred_bboxes, pred_confidence_scores, pred_classes = get_outputs_detectron2(outputs)
     pred_bboxes = pred_bboxes.detach().numpy().astype(int)
     pred_confidence_scores = pred_confidence_scores.detach().numpy()
     pred_confidence_scores = np.round(pred_confidence_scores, 2)
     pred_classes = pred_classes.detach().numpy().astype(int)
-    img_after = draw_bbox_infer(img, pred_bboxes, 
+    img_after = draw_bbox_infer(image, pred_bboxes, 
                                 pred_classes, pred_confidence_scores,
                                 params["CLASSES_NAME"], params["COLOR"], 5)
     col_2.write(f"Image after (duration: {duration:.3f})")
     col_2.image(img_after)
     update_data_to_data_lake(rds_client, s3_resource, aws_s3_info, pred_confidence_scores, pred_classes, pred_bboxes,
-                             img_file, file.name, params["SCORE_THR"], params["NMS_THR"])
+                             image_file, file.name, params["SCORE_THR"], params["NMS_THR"])
 
 if __name__ == "__main__":
     if (s3_resource is None) & (rds_client is None):
