@@ -47,4 +47,8 @@ docker run -p 8501:8501 chestxrayv3
 
 *Expected output:*
 
+![plot](https://github.com/DatacollectorVN/Chest-Xray-Version3/blob/master/public-imgs/setup_gcp_fig1.png?raw=true)
+
 Then when you access website application via `http://34.168.110.196:8501`, you can interact directly with our application.
+
+![plot](https://github.com/DatacollectorVN/Chest-Xray-Version3/blob/master/public-imgs/setup_gcp_fig2.png?raw=true)
