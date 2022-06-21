@@ -37,4 +37,4 @@ The processes:
 - **Stage 4: ETL for transforming data to data warehouse**. The data in Amazon RDS is relational data and data in Amazon DocumentDB is non-relational data with document format. Therefore, we must transform data to correct format after loading into Amazon DocumentDB.
 - **Stage 5: Batch loading to data mart**. The data is stored in cloud. To use that data, we must transform the organized data to the data format for specific requirement. In this case, we transform and loading the annotations with COCO format and xray images in data mart.
 
-Read here for more detail each stage.
+Read [here](https://github.com/DatacollectorVN/Chest-Xray-Version3/tree/master/back-end-detail) for more detail each stage.
