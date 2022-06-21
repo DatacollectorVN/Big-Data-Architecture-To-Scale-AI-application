@@ -15,14 +15,14 @@ This our project have 2 main components:
 - **Back-end** : Backend is the server-side of the website. It stores and arranges data, and also makes sure everything on the client-side of the website works fine. In our project, the backend must have the special part that is Deep learning model operation. So our backend has 2 parts, “DL model on cloud” and “Database system”. With backend operation, we used Python language and Django framework for building.
 - **Front-end** : The part of a website that the user interacts with directly is termed the front end. It is also referred to as the ‘client side’ of the application. With frontend operation, we used Python with Streamlit. In the future, we will use 3 languages: HTML, CSS, JavaScript and ReactJS framework for building.
 
-Insert image
+![plot](https://github.com/DatacollectorVN/Chest-Xray-Version3/blob/master/public-imgs/introduction_fig1.png?raw=true)
 
 *Note:* In this repository, we mainly focus on building **Back-end** architecture. 
 
 ## 2. Back-end architecture
 The figure below shows the back-end architecture of project where we built data pipeline for data lake, data warehouse and data mart. In the backend architecture, it consist 4 components and 5 processes.
 
-Insert image
+![plot](https://github.com/DatacollectorVN/Chest-Xray-Version3/blob/master/public-imgs/introduction_fig2.png?raw=true)
 
 The components:
 - **Application**: It is the web application of project that end-user can interact directly.
@@ -30,7 +30,7 @@ The components:
 - **Data warehouse**: A data warehouse is a type of data management system that is designed to enable and support business intelligence (BI) activities, especially analytics. Data warehouses are solely intended to perform queries and analysis and often contain large amounts of historical data. The data warehouse of project used Amazon DocumentDB
 - **Data mart**: A data mart is a simple form of data warehouse focused on a single subject or line of business. With a data mart, teams can access data and gain insights faster, because they don’t have to spend time searching within a more complex data warehouse or manually aggregating data from different sources. The data mart of project that is built on on-premise server.
 
-The componentses:
+The processes:
 - **Stage 1: Docker container**. The container include the graphic user interface (GUI), AI models and the developed environment. Total size of this container is approximate 7GB.
 - **Stage 2: Extract and load**. This stage use for extract the data from application (x-ray images and meta data) and load it into data lake.
 - **Stage 3: ETL for backup data**. ETL refers to Extract, Transform, and Load commonly used in the field of data engineering. This stage is used to load data from Amazon RDS to Amazon S3 for future backup because storage and management are more expensive than storage in Amazon S3 and the price depends on the total amount of data storage , so it's sometimes recommended to delete the data in Amazon RDS and back it up to Amazon S3.
