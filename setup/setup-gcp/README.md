@@ -8,7 +8,7 @@ In GCP, we setup a virtual machine (VM) for running our web application.
 ### Step 1: Create VM Instance
 - Choose `Virtual machine --> VM instances` then click `CREATE INSTANCE`. 
 - When setup new instance for this project, please select at least `Machine type` is `e2 - medium (2 vCPU, 4GB memory)`.
-- Click `CHANGE` button in `Boot disk` and choose `Container Optimized OS` of `Operating system` for running Docker and `50GB` of `Size` cause our Docker image and container have approaximate 10GB.
+- Click `CHANGE` button in `Boot disk` and choose `Container Optimized OS` of `Operating system` for running Docker and `50GB` of `Size` cause our Docker image and container have approaximate 7GB.
 - Tick `Allow HTTP traffic` and `Allow HTTPS traffic` in `FireWall`.
 - Then create VM Instance..
 

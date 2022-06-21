@@ -31,10 +31,4 @@ The components:
 - **Data mart**: A data mart is a simple form of data warehouse focused on a single subject or line of business. With a data mart, teams can access data and gain insights faster, because they don’t have to spend time searching within a more complex data warehouse or manually aggregating data from different sources. The data mart of project that is built on on-premise server.
 
 The componentses:
-- **Stage 1: Docker container**. The container include the graphic user interface (GUI), AI models and the developed environment. Total size of this container is approximate 7GB.
-- **Stage 2: Extract and load**. This stage use for extract the data from application (x-ray images and meta data) and load it into data lake.
-- **Stage 3: ETL for backup data**. ETL refers to Extract, Transform, and Load commonly used in the field of data engineering. This stage is used to load data from Amazon RDS to Amazon S3 for future backup because storage and management are more expensive than storage in Amazon S3 and the price depends on the total amount of data storage , so it's sometimes recommended to delete the data in Amazon RDS and back it up to Amazon S3.
-- **Stage 4: ETL for transforming data to data warehouse**. The data in Amazon RDS is relational data and data in Amazon DocumentDB is non-relational data with document format. Therefore, we must transform data to correct format after loading into Amazon DocumentDB.
-- **Stage 5: Batch loading to data mart**. The data is stored in cloud. To use that data, we must transform the organized data to the data format for specific requirement. In this case, we transform and loading the annotations with COCO format and xray images in data mart.
-
-Read here for more detail each stage.
+- Stage 1: Docker container : The container include the graphic user interface (GUI), AI models and the developed environment. Total size of this container is approximate 7GB
