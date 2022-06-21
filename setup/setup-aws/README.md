@@ -74,3 +74,4 @@ Because this stage, we run Airflow server in local machine. Therefore, you must 
 - Then create the folder in S3 for data backup. 
 - Create AWS Glue Job: `Create job --> Spark script editor` then copy the content in `aws_glue_job/3.aws_glue_job_data_backup.py`.
 into AWS Glue Job. *Note:* You must replace the text in `< >`.
+
