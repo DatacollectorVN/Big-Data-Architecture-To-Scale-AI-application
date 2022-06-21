@@ -8,5 +8,5 @@ INSERT INTO pred_bounding_box VALUES (3, 2,	2, 0.5, 611, 200, 700, 272);
 INSERT INTO pred_bounding_box VALUES (4, 2, 2, 0.7, 600, 200, 720, 350);
 INSERT INTO pred_bounding_box VALUES (5, 2,	3, 0.39, 584, 170, 760, 348);
 INSERT INTO image VALUES (1, 'nhannt70', 'xray-images', 'img_1');
-INSERT INTO image VALUES (2, 'nhannt70', 'xray-images', 'img_1');
+INSERT INTO image VALUES (2, 'nhannt70', 'xray-images', 'img_2');
 
