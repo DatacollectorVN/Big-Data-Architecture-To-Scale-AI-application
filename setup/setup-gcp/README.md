@@ -31,8 +31,13 @@ Create firewall for access the VM Instance from outside VPC.
 ```bash
 git clone https://github.com/DatacollectorVN/Chest-Xray-Version3.git
 cd Chest-Xray-Version3
-nano AC/credential_aws_sample.ini
+nano IAC/credential_aws_sample.ini
 ```
+- Change credential path in `streamlit_inference.py`. Cause during test process, we use other credential without commint on Github.
+```bash
+nano streamlit_inference.py
+```
+Then replace line 22 `INI_FILE_PATH = os.path.join('IAC', 'credential_aws.ini')` to `INI_FILE_PATH = os.path.join('IAC', 'credential_aws_sample.ini')`.
 
 *Notes:* You must setup your AWS before running Docker. You also do not configure the `IAC/credential_aws_sample.ini`. It just connect and load data into your AWS. To prevent the error if don't connect AWS, you should comment the line `86-87` and `90-96` before running Docker.
 
