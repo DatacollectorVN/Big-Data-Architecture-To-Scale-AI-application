@@ -19,7 +19,7 @@ import sys
 
 s3_resource = None
 rds_client = None
-INI_FILE_PATH = os.path.join('IAC', 'credential_aws_sample.ini')
+INI_FILE_PATH = os.path.join('IAC', 'credential_aws.ini')
 SECTION_RDS = 'Credential-AWS-RDS-MySQL'
 SECTION_S3 = 'Credential-AWS-S3'
 SECTION_INFO_S3 = 'Info-AWS-S3'
