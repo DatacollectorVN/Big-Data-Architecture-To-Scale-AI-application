@@ -8,9 +8,17 @@ from airflow.models.baseoperator import chain
 from airflow.operators.dummy import DummyOperator
 from airflow.utils.task_group import TaskGroup
 from airflow.operators.subdag import SubDagOperator
+from airflow.operators.python_operator import PythonOperator
 # This makes scheduling easy
 from airflow.utils.dates import days_ago
-JOBS = ['<AWS_Glue_job_name>']
+import yaml
+import os
+
+FILE_INFER_CONFIG = os.path.join("airflow", "dags", "config_airflow.yaml")
+with open(FILE_INFER_CONFIG) as file:
+    params = yaml.load(file, Loader = yaml.FullLoader)
+
+JOBS = params['AWS_GLUE_JOBS_NAME']
 DEFAULT_ARGS = {
     'owner': 'Nathan Ngo',
     'start_date': days_ago(0),
@@ -20,6 +28,8 @@ DEFAULT_ARGS = {
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
+def run_ETL():
+    print(os.getcwd())
 
 with DAG(
     dag_id='activate-job',
@@ -31,16 +41,6 @@ with DAG(
     begin = DummyOperator(task_id="begin")
 
     end = DummyOperator(task_id="end")
-    
-    # with TaskGroup('Activate_glue_job') as activate:
-    #     load_to_s3 = BashOperator(
-    #         task_id = JOBS[0],
-    #         bash_command=f'aws glue start-job-run --job-name {JOBS[0]}'
-    #     )
-    #     load_to_documentdb = BashOperator(
-    #         task_id = JOBS[1],
-    #         bash_command=f'aws glue start-job-run --job-name {JOBS[1]}'
-    #     )
 
     load_to_s3 = BashOperator(
             task_id = JOBS[0],

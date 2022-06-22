@@ -16,7 +16,6 @@ FILE_INFER_CONFIG = os.path.join("airflow", "dags", "config_airflow.yaml")
 with open(FILE_INFER_CONFIG) as file:
     params = yaml.load(file, Loader = yaml.FullLoader)
 
-
 def run_ETL():
     key = paramiko.RSAKey.from_private_key_file(params['AWS_EC2_KEY_PAIR'])
     client = paramiko.SSHClient()
