@@ -1,0 +1,7 @@
+AWS_GLUE_JOBS_NAME: ["nhannt70_data_backup"]
+AWS_EC2_KEY_PAIR: "./nhannt70-xray-ohio.pem"
+AWS_EC2_HOSE_NAME: "ec2-3-144-195-169.us-east-2.compute.amazonaws.com"
+AWS_EC2_USER: "ec2-user"
+AWS_EC2_CONDA_ENV_NAME: ec2
+AWS_EC2_BASE_DIR: "x_ray"
+AWS_EC2_ETL_FILES: ["ETL_data_to_DocumentDB.py"]
