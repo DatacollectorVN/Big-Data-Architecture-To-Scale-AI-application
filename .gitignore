@@ -5,7 +5,5 @@ IAC/credential_aws.ini
 IAC/credential_aws.ini
 IAC/rds-combined-ca-bundle.pem
 airflow/
-nhannt70-xray-ohio.pem
-rds-combined-ca-bundle.pem
-temp_1.sh
-annotation_coco.json
+IAC/nhannt70-xray-ohio.pem
+output/

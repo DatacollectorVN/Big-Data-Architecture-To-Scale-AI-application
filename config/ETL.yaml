@@ -1,0 +1,13 @@
+MONGODB: "x_ray"
+MONGOCOL_BASE: "x_ray_collection_"
+MONGOCOL_INDEX: 2
+SAVE_PATH: 'output'
+COCO_FILE_NAME: 'data.json'
+LICENSE: 0
+FLICKR_URL: ""
+COCO_URL: ""
+IS_CROWD: 0
+BBOX_MODE: 1 
+CLASSES_NAME : ["Aortic enlargement", "Cardiomegaly", "ILD", "Infiltration", "Nodule/Mass"]
+SEGMENTATION: []
+
