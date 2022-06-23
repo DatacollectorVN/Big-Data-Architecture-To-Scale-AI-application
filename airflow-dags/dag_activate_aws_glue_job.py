@@ -1,20 +1,17 @@
-from asyncio import tasks
 from datetime import timedelta
-# The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
-# Operators; we need this to write tasks!
 from airflow.operators.bash_operator import BashOperator
 from airflow.models.baseoperator import chain
 from airflow.operators.dummy import DummyOperator
-from airflow.utils.task_group import TaskGroup
-from airflow.operators.subdag import SubDagOperator
-from airflow.operators.python_operator import PythonOperator
-# This makes scheduling easy
+from airflow.models import Variable
 from airflow.utils.dates import days_ago
 import yaml
-import os
 
-FILE_INFER_CONFIG = os.path.join("airflow", "dags", "config_airflow.yaml")
+# get airflow variable
+tmpl_search_path = Variable.get("BASE_PATH")
+
+# read configure file. Based on `BASE_PATH` airflow variable.
+FILE_INFER_CONFIG = "config_airflow.yaml"
 with open(FILE_INFER_CONFIG) as file:
     params = yaml.load(file, Loader = yaml.FullLoader)
 
@@ -28,15 +25,12 @@ DEFAULT_ARGS = {
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
-def run_ETL():
-    print(os.getcwd())
-
 with DAG(
     dag_id='activate-job',
     default_args=DEFAULT_ARGS,
-    dagrun_timeout=timedelta(minutes=15),
+    dagrun_timeout=timedelta(minutes=7),
     schedule_interval='*/5 * * * *',
-    #schedule_interval = timedelta(days=1)
+    template_searchpath=tmpl_search_path
 ) as dag:
     begin = DummyOperator(task_id="begin")
 

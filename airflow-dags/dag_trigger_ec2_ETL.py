@@ -1,18 +1,16 @@
 import paramiko
 from airflow import DAG
 from datetime import timedelta
-# Operators; we need this to write tasks!
-from airflow.operators.bash_operator import BashOperator
 from airflow.models.baseoperator import chain
 from airflow.operators.dummy import DummyOperator
-# This makes scheduling easy
 from airflow.models import Variable
 from airflow.utils.dates import days_ago
 import yaml
 import os
 from airflow.operators.python_operator import PythonOperator
 
-FILE_INFER_CONFIG = os.path.join("airflow", "dags", "config_airflow.yaml")
+tmpl_search_path = Variable.get("BASE_PATH")
+FILE_INFER_CONFIG = "config_airflow.yaml"
 with open(FILE_INFER_CONFIG) as file:
     params = yaml.load(file, Loader = yaml.FullLoader)
 
@@ -47,8 +45,9 @@ DEFAULT_ARGS = {
 with DAG(
     dag_id='activate-ec2',
     default_args=DEFAULT_ARGS,
-    dagrun_timeout=timedelta(minutes=15),
+    dagrun_timeout=timedelta(minutes=7),
     schedule_interval='*/5 * * * *',
+    template_searchpath=tmpl_search_path
     #schedule_interval = timedelta(days=1)
 ) as dag:
     begin = DummyOperator(task_id="begin")
