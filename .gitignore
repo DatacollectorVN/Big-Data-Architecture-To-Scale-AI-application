@@ -4,4 +4,5 @@ snapshots/
 IAC/credential_aws.ini
 IAC/credential_aws.ini
 IAC/rds-combined-ca-bundle.pem
+IAC/nhannt70-xray-ohio.pem
 airflow/

@@ -140,13 +140,14 @@ pip install -r Chest-Xray-Version3/requirements_airflow_dags.txt
 mkidr ./airflow/dags
 mkidr ./airflow/dags/IAC
 cp Chest-Xray-Version3/airflow-dags/* ./airflow/dags/
+cp Chest-Xray-Version3/config/airflow.yaml ./airflow/dags/
 ```
 
 - Change the value in configuration with suitable value
 ```bash
-nano ./airflow/dags/config_airflow.yaml
+nano ./airflow/dags/airflow.yaml
 ```
-*Note:* in `AWS_EC2_KEY_PAIR` add the value `./airflow/dags/IAC/<key_pair_file_name>`. And the other depends on your setting up in AWS.
+*Note:* in `AWS_EC2_KEY_PAIR` add the value `~/airflow/dags/IAC/<key_pair_file_name>`. And the other depends on your setting up in AWS.
 
 - Upload your key pair file into VM Instances by clikc `Upload file` and move it to `~/airflow/dags/IAC/`.
 ```bash
