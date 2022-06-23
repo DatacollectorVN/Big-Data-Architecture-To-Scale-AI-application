@@ -1,0 +1,4 @@
+MONGODB: "x_ray"
+MONGOCOL_BASE: "x_ray_collection_test_"
+MONGOCOL_INDEX: 6
+INTERVAL_DAY_LOADING: 1
