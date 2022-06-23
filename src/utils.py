@@ -174,7 +174,12 @@ def _load_table(cur, table_name, columns=None):
 #### 
 def query_img_id_from_collection(mongocol):
     results = mongocol.find({}, {'img_id':1, '_id':0})
-    imgs_id = [i['img_id'] for i in list(results)]
+    imgs_id = []
+    for i in list(results):
+        if len(i) == 0: # advoid the meta info at the first row in collection
+            continue
+        else:
+            imgs_id.append(i['img_id'])
 
     return imgs_id
 

@@ -5,3 +5,4 @@ IAC/credential_aws.ini
 IAC/credential_aws.ini
 IAC/rds-combined-ca-bundle.pem
 airflow/
+rds-combined-ca-bundle.pem
