@@ -25,7 +25,6 @@ class BatchLoader(SettingConfig):
         annotations = []
         rows = rows[1:] # skip the first rows cause it is the meta infomation
         for row in tqdm(rows, total = len(rows)):
-            # img = _get_img(s3_resource, params, row)
             img = {}
             
             # get image information
