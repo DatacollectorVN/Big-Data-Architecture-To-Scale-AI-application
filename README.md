@@ -1,7 +1,7 @@
 # Chest-Xray-Version3
 Complete building Docker for AI application on Google Cloud Platform (GCP) and data architecture on Amazon Web Service (AWS)
 
-This repository has 3 branch:
+This repository has 3 branchs:
 - `master` branch for running Web application with Docker and management workflow with Airflow. That is used for setting Instance VM in GCP.
 - `ec2` branch for setting up and running python script in Amazon EC2.
 - `on-premise` branch for setting up and running bash script to batch loading data from on-premise server.
@@ -19,7 +19,7 @@ The DL model are developed from May-2021 to Jan-2022 about researching and devel
 
 ### 1.3. Project ardchitecture
 This our project have 2 main components:
-- **Back-end** : Backend is the server-side of the website. It stores and arranges data, and also makes sure everything on the client-side of the website works fine. In our project, the backend must have the special part that is Deep learning model operation. So our backend has 2 parts, “DL model on cloud” and “Database system”. With backend operation, we used Python language and Django framework for building.
+- **Back-end** : Backend is the server-side of the website. It stores and arranges data, and also makes sure everything on the client-side of the website works fine. In our project, the backend must have the special part that is Deep learning model operation. So our backend has 2 parts, “DL model on cloud” and “Database system”.
 - **Front-end** : The part of a website that the user interacts with directly is termed the front end. It is also referred to as the ‘client side’ of the application. With frontend operation, we used Python with Streamlit. In the future, we will use 3 languages: HTML, CSS, JavaScript and ReactJS framework for building.
 
 ![plot](https://github.com/DatacollectorVN/Chest-Xray-Version3/blob/master/public-imgs/introduction_fig1.png?raw=true)
