@@ -1,7 +1,8 @@
 from calendar import c
 import os
 import boto3
-from src.utils import batch_loading, transform_coco_format
+from src.batch_loader import BatchLoader
+from src.utils import transform_coco_format
 from IAC.config import config
 from pymongo import MongoClient
 import json
@@ -30,8 +31,9 @@ def main():
     mongodb = client[params['MONGODB']]
     mongocol = mongodb[f"{params['MONGOCOL_BASE']}{params['MONGOCOL_INDEX']}"]    
     
+    batch_loader = BatchLoader(**params)
     # transform and batch loading data from S3 and DocumentDB
-    imgs, annotations = batch_loading(s3_resource, mongocol, params)
+    imgs, annotations = batch_loader.batch_loading(s3_resource, mongocol)
     
     coco_data = transform_coco_format(imgs, annotations, params)
     
