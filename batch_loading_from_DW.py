@@ -1,7 +1,7 @@
 from calendar import c
 import os
 import boto3
-from src.batch_loader import BatchLoader
+from src.batch_loader import BatchLoaderCOCO
 from src.utils import transform_coco_format
 from IAC.config import config
 from pymongo import MongoClient
@@ -30,16 +30,8 @@ def main():
     client = MongoClient(dbUri, ssl_cert_reqs=ssl.CERT_NONE)
     mongodb = client[params['MONGODB']]
     mongocol = mongodb[f"{params['MONGOCOL_BASE']}{params['MONGOCOL_INDEX']}"]    
-    
-    batch_loader = BatchLoader(**params)
-    # transform and batch loading data from S3 and DocumentDB
-    imgs, annotations = batch_loader.batch_loading(s3_resource, mongocol)
-    
-    coco_data = transform_coco_format(imgs, annotations, params)
-    
-    # save to json file
-    with open(os.path.join(params['SAVE_PATH'], params['COCO_FILE_NAME']), "w") as outfile:
-        json.dump(coco_data, outfile)
+    loader = BatchLoaderCOCO(**params)
+    loader.batch_loading(s3_resource, mongocol)
     print(f'Done save data into {params["SAVE_PATH"]}')
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 import os
 from PIL import Image
 from tqdm import tqdm
+import json
 from src.utils import get_date_capture_img, down_load_file_s3_folder, extract_img_size, convert_bbox_xyxy_to_xywh, compute_area
 
 class SettingConfig(object):
@@ -8,17 +9,20 @@ class SettingConfig(object):
         for key in args:
             setattr(self, key, args[key])
 
-class BatchLoader(SettingConfig):
+class BatchLoaderCOCO(SettingConfig):
+    ''' Transform and load data with COCO format
+    
+    '''
     def __init__(self, **args):
-        super(BatchLoader, self).__init__(**args)
+        super(BatchLoaderCOCO, self).__init__(**args)
     
     def batch_loading(self, s3_resource, mongocol):
         results = mongocol.find({}, {'_id':0})
         rows = list(results)
         meta_info = rows[0]
         imgs, annotations = self._transform_imgs_annots(s3_resource, rows)
-
-        return imgs, annotations
+        coco_data = self._transform_coco_format(imgs, annotations)
+        self._loaded_coco_data(coco_data)
     
     def _transform_imgs_annots(self, s3_resource, rows):
         imgs = []
@@ -77,3 +81,36 @@ class BatchLoader(SettingConfig):
                 annotations.append(annotation)
         
         return annotations
+    
+    def _transform_coco_format(self, imgs, annotations):
+        info = {
+            'description': 'Dataset with image from user uploaded and annotations from model prediction'
+        }
+        licenses = [
+            {
+                'url': 'https://github.com/DatacollectorVN/Chest-Xray-Version3',
+                'id': self.LICENSE
+            }
+        ]
+        categories = []
+        for i, class_name in enumerate(self.CLASSES_NAME):
+            category_ = {
+                'supercategory': class_name,
+                'id': i,
+                'name': class_name
+            }
+            categories.append(category_)
+        
+        coco_data = {
+            'info': info,
+            'licenses': licenses,
+            'categories': categories,
+            'images': imgs,
+            'annotations': annotations
+        }
+
+        return coco_data
+    
+    def _loaded_coco_data(self, coco_data):
+        with open(os.path.join(self.SAVE_PATH, self.COCO_FILE_NAME), "w") as outfile:
+            json.dump(coco_data, outfile)
