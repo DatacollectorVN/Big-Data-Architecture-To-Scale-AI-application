@@ -10,9 +10,8 @@ class SettingConfig(object):
             setattr(self, key, args[key])
 
 class BatchLoaderCOCO(SettingConfig):
-    ''' Transform and load data with COCO format
+    ''' Transform and load data with COCO format'''
     
-    '''
     def __init__(self, **args):
         super(BatchLoaderCOCO, self).__init__(**args)
     

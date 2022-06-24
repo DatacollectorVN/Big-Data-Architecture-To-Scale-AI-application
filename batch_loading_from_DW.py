@@ -2,10 +2,8 @@ from calendar import c
 import os
 import boto3
 from src.batch_loader import BatchLoaderCOCO
-from src.utils import transform_coco_format
 from IAC.config import config
 from pymongo import MongoClient
-import json
 import ssl
 import yaml
 

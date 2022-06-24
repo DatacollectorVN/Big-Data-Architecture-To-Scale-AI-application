@@ -1,36 +1,6 @@
 import os
 from PIL import Image
-from tqdm import tqdm
 
-def transform_coco_format(imgs, annotations, params):
-    info = {
-        'description': 'Dataset with image from user uploaded and annotations from model prediction'
-    }
-    licenses = [
-        {
-            'url': 'https://github.com/DatacollectorVN/Chest-Xray-Version3',
-            'id': params['LICENSE']
-        }
-    ]
-    categories = []
-    for i, class_name in enumerate(params['CLASSES_NAME']):
-        category_ = {
-            'supercategory': class_name,
-            'id': i,
-            'name': class_name
-        }
-        categories.append(category_)
-    
-    coco_data = {
-        'info': info,
-        'licenses': licenses,
-        'categories': categories,
-        'images': imgs,
-        'annotations': annotations
-    }
-
-    return coco_data
-    
 def _download_s3_folder(s3_resource, bucket_name, s3_folder, local_dir=None):
     """
     Download the all contents of a folder directory
