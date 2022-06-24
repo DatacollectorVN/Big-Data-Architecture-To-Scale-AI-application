@@ -59,6 +59,7 @@ Then when you access website application via `http://34.168.110.196:8501`, you c
 ![plot](https://github.com/DatacollectorVN/Chest-Xray-Version3/blob/master/public-imgs/setup_gcp_fig2.png?raw=true)
 
 ## 2. Setup and configure VM Instance for running workflow management (Apache Airflow)
+Before setup this section, you must complete all setup in `setup-aws` part.
 ### Step 1: Create VM Instance
 Like the `Step 1` of part 1 above, but instead of creating `Container Optimized OS`, select `Ubuntu`
 
@@ -143,7 +144,7 @@ cp Chest-Xray-Version3/airflow-dags/* ./airflow/dags/
 cp Chest-Xray-Version3/config/airflow.yaml ./airflow/dags/
 ```
 
-- Change the value in configuration with suitable value
+- Change the value in configuration with suitable values.
 ```bash
 nano ./airflow/dags/airflow.yaml
 ```

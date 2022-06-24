@@ -1,6 +1,13 @@
 # Chest-Xray-Version3
 Complete building Docker for AI application on Google Cloud Platform (GCP) and data architecture on Amazon Web Service (AWS)
 
+This repository has 3 branch:
+- `master` branch for running Web application with Docker and management workflow with Airflow. That is used for setting Instance VM in GCP.
+- `ec2` branch for setting up and running python script in Amazon EC2.
+- `on-premise` branch for setting up and running bash script to batch loading data from on-premise server.
+
+Please read the `setup` part for detail.
+
 ## 1. Introduction
 ### 1.1. Scope of project
 Deep learning (DL) applications are growing and being widely applied in many industries. One of the most important tasks in DL application is deploying DL models to productions besides the algorithm research. This project aims to building back-end system on cloud and deploy DL model to production that the users can use directly. In this project use the DL model for Chest X-ray abnormalities detection and the users can interact via website application.
