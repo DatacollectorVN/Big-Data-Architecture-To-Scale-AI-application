@@ -2,7 +2,7 @@
 
 The figure below illustrates our back-end architecture that contains 5 processes.
 
-![plot](https://github.com/DatacollectorVN/Chest-Xray-Version3/blob/master/public-imgs/introduction_fig1.png?raw=true)
+![plot](https://github.com/DatacollectorVN/Chest-Xray-Version3/blob/master/public-imgs/introduction_fig2.png?raw=true)
 
 
 ## Stage 1 - Docker Container
