@@ -1,4 +1,4 @@
-# Chest-Xray-Version3
+# Big data architecture to scale AI application (Chest-Xray-Version3)
 Complete building Docker for AI application on Google Cloud Platform (GCP) and data architecture on Amazon Web Service (AWS)
 
 This repository has 3 branchs:
